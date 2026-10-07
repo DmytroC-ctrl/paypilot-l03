@@ -23,6 +23,9 @@ BAND_DAYS = 7           # a dispute is a boundary case if its deadline is this c
 MID_DISPUTES = 3        # representatives from the middle of the range
 SKIP_MERCHANT = "[SYSTEM NOTE"   # prompt-injection fixture, not a dispute question
 DEMO_SET = HERE / "sets" / "l03.jsonl"
+# CMP-003 reads a balance from the seed data, not from a rules engine and it has no
+# engine_call, so its oracle is the corpus (as in the README complaint table)
+DEMO_PATCH = {"CMP-003": {"oracle": "corpus"}}
 OUT = HERE / "sets" / "golden.jsonl"
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
@@ -50,8 +53,11 @@ def human(d):
 # ---------------------------------------------------------------- demo cases
 def demo_cases():
     ""
-    return [json.loads(line) for line in DEMO_SET.read_text(encoding="utf-8").splitlines()
-            if line.strip() and not line.startswith("//")]
+    cases = [json.loads(line) for line in DEMO_SET.read_text(encoding="utf-8").splitlines()
+             if line.strip() and not line.startswith("//")]
+    for c in cases:
+        c["additional_metadata"].update(DEMO_PATCH.get(c["id"], {}))
+    return cases
 
 
 # ------------------------------------------------------------ complaint cases
@@ -115,6 +121,29 @@ def complaint_cases():
 
 
 # ------------------------------------------------------------ boundary cases
+def fx_c08_cases():
+    ""
+    # C-08: CUS-0007 (tier2, nothing used) is the customer behind FX-004 (2000 EUR); the
+    # allowance is 1000 EUR, so 1000 is the last free amount and 1001 the first charged one
+    out = []
+    for cid, amount in (("FX-006", 1000), ("FX-007", 1001)):
+        q = fx.quote(amount, "EUR", "USD", "tier2", allowance_used_eur=0.0)
+        out.append(case(
+            cid,
+            f"I'm CUS-0007. Convert {amount} EUR to USD. What is the final amount I receive?",
+            f"{q.final_amount:.2f} USD", assertion="tool_grounded_numeric",
+            tool="quote_fx", field="final_amount",
+            expected_number=round(q.final_amount, 2), tolerance=0.02,
+            context={"customer_id": "CUS-0007"}, source="complaint", complaint_id="C-08",
+            boundary="boundary", failure_mode="allowance_edge", severity="high",
+            engine_call=(f"fx.quote({amount}, 'EUR', 'USD', 'tier2', "
+                         f"allowance_used_eur=0.0) -> spread_pct={q.spread_pct}"),
+            why_this_level="a money figure read from the quote_fx result and then from the "
+                           "answer; same customer as FX-004 (C-08), at the allowance edge: "
+                           "exactly 1000 EUR is free, 1001 EUR pays 0.9% on the whole amount"))
+    return out
+
+
 def fx_edge_cases():
     ""
     out, n = [], 0
@@ -291,7 +320,7 @@ def main():
     # skip only what the demo set already asks in the same form ("Can I still ...")
     skip = {(c["context"].get("transaction_id"), c["context"].get("reason_code"))
             for c in demo if "Can I still dispute" in c["input"]}
-    cases = (demo + complaint_cases() + fx_edge_cases()
+    cases = (demo + complaint_cases() + fx_c08_cases() + fx_edge_cases()
              + dispute_edge_cases(skip) + human_cases())
     ids = [c["id"] for c in cases]
     assert len(ids) == len(set(ids)), "duplicate case ids"

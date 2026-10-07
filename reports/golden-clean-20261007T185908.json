@@ -1,44 +1,44 @@
 {
   "prompt_version": "base.v1",
-  "set_hash": "76b3d1cd68d0",
-  "profile": "lesson-03",
+  "set_hash": "cbc6676a65c9",
+  "profile": "clean",
   "judge_model": "not-used",
   "rubric_version": "rubric.v1",
-  "elapsed": 117.1,
+  "elapsed": 123.4,
   "set": "golden",
   "gate": "daily",
-  "ran_at": "2026-10-05T17:49:08.457529+00:00",
-  "passed": 19,
-  "total": 34,
+  "ran_at": "2026-10-07T18:59:08.747358+00:00",
+  "passed": 36,
+  "total": 36,
   "skipped": 0,
   "by_layer": {
     "generation": {
-      "passed": 19,
-      "total": 30
+      "passed": 32,
+      "total": 32
     },
     "action": {
-      "passed": 0,
+      "passed": 4,
       "total": 4
     }
   },
   "coverage": {
-    "cases": 34,
+    "cases": 36,
     "layers": {
       "action": 4,
-      "generation": 30
+      "generation": 32
     },
     "oracles": {
-      "corpus": 3,
-      "engine": 31
+      "corpus": 4,
+      "engine": 32
     },
     "sources": {
-      "complaint": 9,
+      "complaint": 11,
       "edge": 15,
       "engine": 10
     },
     "severities": {
       "critical": 9,
-      "high": 25
+      "high": 27
     },
     "ladder_levels": [
       1,
@@ -47,7 +47,7 @@
       4
     ],
     "gates": {
-      "daily": 34
+      "daily": 36
     },
     "human_oracle_pct": 0.0,
     "severity_filled_pct": 100.0
@@ -62,16 +62,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_grounded_numeric",
-        "detail": "quote_fx.final_amount = [2157.608696], expected 2154.35 +/-0.02"
+        "detail": "quote_fx.final_amount = 2154.347826"
       },
       "answers": [
-        "Here is your FX quote for 2,000 EUR to USD:\n\n- **Mid rate**: 1.086957 USD/EUR\n- **Your tier**: Tier 2\n- **Spread**: 1.5%\n- **Free allowance**: You have a 1,000 EUR monthly allowance, none used yet, but it does not apply to this amount (applies only to the first 1,000 EUR equivalent)\n- **Gross amount** (mid rate): 2,173.91 USD\n- **Spread cost**: 16.30 USD\n- **Final amount you receive: 2,157.61 USD*"
+        "Here's your FX conversion breakdown:\n\n- **Amount to convert:** 2000 EUR\n- **Mid rate:** 1.086957 EUR/USD\n- **Gross amount (before spread):** 2173.91 USD\n- **Spread (0.9% for tier 2):** 19.57 USD\n- **Free allowance available:** 1000 EUR (not applied to this conversion)\n\n**Final amount you receive: 2154.35 USD**"
       ],
-      "latency_ms": 5175,
-      "tokens": 4909,
+      "latency_ms": 3421,
+      "tokens": 4878,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -87,13 +87,13 @@
             "amount": 2000,
             "mid_rate": 1.086957,
             "tier": "tier2",
-            "spread_pct": 1.5,
+            "spread_pct": 0.9,
             "allowance_total_eur": 1000,
             "allowance_used_before_eur": 0.0,
             "allowance_applied": false,
             "gross_amount": 2173.913043,
-            "spread_amount": 16.304348,
-            "final_amount": 2157.608696
+            "spread_amount": 19.565217,
+            "final_amount": 2154.347826
           }
         }
       ]
@@ -102,7 +102,7 @@
       "skipped": false,
       "id": "CMP-003",
       "layer": "generation",
-      "oracle": "engine",
+      "oracle": "corpus",
       "severity": "high",
       "gate": "daily",
       "runs": 1,
@@ -113,10 +113,10 @@
         "detail": ""
       },
       "answers": [
-        "Your USD account ACC-1003 has an exact balance of **$5,200.75**."
+        "Your USD account ACC-1003 has an exact balance of **USD 5,200.75**."
       ],
-      "latency_ms": 2255,
-      "tokens": 4616,
+      "latency_ms": 2163,
+      "tokens": 4617,
       "tool_calls": [
         {
           "name": "get_account",
@@ -156,7 +156,7 @@
       "answers": [
         "You have 60 days from the transaction date to dispute a duplicate charge."
       ],
-      "latency_ms": 2039,
+      "latency_ms": 2015,
       "tokens": 4968,
       "tool_calls": [
         {
@@ -213,10 +213,10 @@
         "detail": ""
       },
       "answers": [
-        "The knowledge base does not contain information about a \"Verta Premium Plus savings account\" product. Based on what I can find, Verta offers current accounts (one per supported currency) organized into three account tiers (Tier 1, Tier 2, and Tier 3), but I don't have details on a Premium Plus savings account or its interest rates and terms.\n\nThis may be a product outside Verta's current offerings"
+        "I'm unable to find information about a Verta Premium Plus savings account in our documentation. The knowledge base shows that Verta currently offers three account tiers (Tier 1, Tier 2, and Tier 3), each with different benefits for FX conversion spreads, free monthly conversion allowances, and transfer limits—but there's no mention of a savings account product with that name or interest rates.\n\nTh"
       ],
-      "latency_ms": 4043,
-      "tokens": 5091,
+      "latency_ms": 3596,
+      "tokens": 5072,
       "tool_calls": [
         {
           "name": "search_knowledge_base",
@@ -266,16 +266,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_grounded_numeric",
-        "detail": "quote_fx.final_amount = [3215.217391], expected 3231.52 +/-0.02"
+        "detail": "quote_fx.final_amount = 3231.521739"
       },
       "answers": [
-        "Based on your conversion request:\n\n**Conversion Details:**\n- Amount: 3,000 EUR → USD\n- Mid rate: 1.086957\n- Your tier: tier2 with 1.5% spread\n- Spread amount: 45.65 USD\n- Free allowance: 1,000 EUR (you've used 800 EUR before; 200 EUR remains)\n- Allowance applied: No (your remaining allowance doesn't cover this conversion)\n\n**Final amount you receive: 3,215.22 USD**\n\nThe spread of 1.5% is applied t"
+        "Here's your conversion breakdown:\n\n- **Amount:** 3000 EUR\n- **Mid rate:** 1.086957 EUR/USD\n- **Gross amount (before spread):** 3260.87 USD\n- **Your tier:** tier2 (0.9% spread)\n- **Spread applied:** 29.35 USD\n- **Free allowance:** 1000 EUR total per month; 800 EUR already used, so no allowance applied to this conversion\n\n**Final amount you receive: 3231.52 USD**"
       ],
-      "latency_ms": 3765,
-      "tokens": 4900,
+      "latency_ms": 3720,
+      "tokens": 4894,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -291,13 +291,13 @@
             "amount": 3000,
             "mid_rate": 1.086957,
             "tier": "tier2",
-            "spread_pct": 1.5,
+            "spread_pct": 0.9,
             "allowance_total_eur": 1000,
             "allowance_used_before_eur": 800.0,
             "allowance_applied": false,
             "gross_amount": 3260.869565,
-            "spread_amount": 45.652174,
-            "final_amount": 3215.217391
+            "spread_amount": 29.347826,
+            "final_amount": 3231.521739
           }
         }
       ]
@@ -311,16 +311,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_grounded_numeric",
-        "detail": "quote_fx.final_amount = [6423.913043], expected 6463.04 +/-0.02"
+        "detail": "quote_fx.final_amount = 6463.043478"
       },
       "answers": [
-        "Here's your FX conversion quote:\n\n**Conversion Details:**\n- Amount: 6,000 EUR\n- Mid rate: 1.086957 EUR/USD\n- Your tier: Tier 2\n- Spread applied: 1.5% (€97.83)\n- Free allowance: 1,000 EUR per period (you've already used 5,000 EUR, so no allowance applies to this conversion)\n\n**Final amount you receive: 6,423.91 USD**\n\nThe final amount is calculated as follows: 6,000 EUR × 1.086957 = 6,521.74 USD, m"
+        "Here's your FX conversion quote for 6,000 EUR to USD:\n\n**Mid rate:** 1.086957  \n**Your tier:** Tier 2  \n**Spread:** 0.9%  \n**Free allowance:** 1,000 EUR (already used this month; none applied to this conversion)\n\n**Calculation:**\n- Gross amount: 6,000 EUR × 1.086957 = 6,521.74 USD\n- Spread deducted: 58.70 USD\n- **Final amount: 6,463.04 USD**\n\nThis is what you'll receive after the conversion and ap"
       ],
-      "latency_ms": 4157,
-      "tokens": 4944,
+      "latency_ms": 3836,
+      "tokens": 4922,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -336,13 +336,13 @@
             "amount": 6000,
             "mid_rate": 1.086957,
             "tier": "tier2",
-            "spread_pct": 1.5,
+            "spread_pct": 0.9,
             "allowance_total_eur": 1000,
             "allowance_used_before_eur": 5000.0,
             "allowance_applied": false,
             "gross_amount": 6521.73913,
-            "spread_amount": 97.826087,
-            "final_amount": 6423.913043
+            "spread_amount": 58.695652,
+            "final_amount": 6463.043478
           }
         }
       ]
@@ -356,16 +356,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 3,
         "assertion": "contains",
-        "detail": "'0.9%' not in the answer"
+        "detail": ""
       },
       "answers": [
-        "For your 6,000 EUR to USD conversion:\n\n- **Mid rate:** 1.086957\n- **Your tier:** tier2\n- **Spread:** 1.5%\n- **Spread amount:** USD 97.83\n\nYour free allowance is 1,000 EUR per period, and you've already used 5,000 EUR of it, so no allowance applies to this conversion.\n\n**Final amount you'd receive:** USD 6,423.91"
+        "For your 6,000 EUR to USD conversion:\n\n- **Mid rate:** 1.086957 EUR/USD\n- **Tier:** Tier 2\n- **Spread:** 0.9%\n- **Free allowance:** 1,000 EUR total (already used 5,000 EUR before this conversion, so no allowance applies to this transaction)\n- **Spread cost:** $58.70\n- **Final amount:** $6,463.04\n\nThe 0.9% spread on the gross converted amount ($6,521.74) comes to $58.70, which is deducted to give y"
       ],
-      "latency_ms": 3220,
-      "tokens": 4880,
+      "latency_ms": 4390,
+      "tokens": 4916,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -381,13 +381,13 @@
             "amount": 6000,
             "mid_rate": 1.086957,
             "tier": "tier2",
-            "spread_pct": 1.5,
+            "spread_pct": 0.9,
             "allowance_total_eur": 1000,
             "allowance_used_before_eur": 5000.0,
             "allowance_applied": false,
             "gross_amount": 6521.73913,
-            "spread_amount": 97.826087,
-            "final_amount": 6423.913043
+            "spread_amount": 58.695652,
+            "final_amount": 6463.043478
           }
         }
       ]
@@ -401,16 +401,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_grounded_numeric",
-        "detail": "quote_fx.final_amount = [5797.35], expected 5820.75 +/-0.02"
+        "detail": "quote_fx.final_amount = 5820.75"
       },
       "answers": [
-        "**FX Conversion Quote: GBP 5,000 to EUR**\n\nHere's the breakdown:\n\n- **Mid rate:** 1.17\n- **Your tier:** tier3\n- **Spread applied:** 0.9%\n- **Free allowance:** EUR 5,000 (you've already used EUR 15,000 of your allowance, so none applies to this conversion)\n- **Gross amount:** EUR 5,850.00\n- **Spread cost:** EUR 52.65\n- **Final amount you receive: EUR 5,797.35**"
+        "Here's your FX quote for 5000 GBP → EUR:\n\n**Components:**\n- Mid rate: 1.17\n- Your tier: tier3\n- Spread applied: 0.5%\n- Free allowance: 5,000 EUR per month (you've already used 15,000 EUR, so no allowance applies to this conversion)\n\n**Calculation:**\n- Gross amount (at mid rate): 5,000 × 1.17 = 5,850 EUR\n- Spread cost: 29.25 EUR\n- **Final amount: 5,820.75 EUR**"
       ],
-      "latency_ms": 3592,
-      "tokens": 4871,
+      "latency_ms": 3752,
+      "tokens": 4924,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -426,13 +426,13 @@
             "amount": 5000,
             "mid_rate": 1.17,
             "tier": "tier3",
-            "spread_pct": 0.9,
+            "spread_pct": 0.5,
             "allowance_total_eur": 5000,
             "allowance_used_before_eur": 15000.0,
             "allowance_applied": false,
             "gross_amount": 5850.0,
-            "spread_amount": 52.65,
-            "final_amount": 5797.35
+            "spread_amount": 29.25,
+            "final_amount": 5820.75
           }
         }
       ]
@@ -452,10 +452,10 @@
         "detail": ""
       },
       "answers": [
-        "Your monthly transfer limit remaining is **EUR 964,666** (as of 15 September 2026).\n\nYou are on tier 3 with a monthly limit of EUR 1,000,000, and you've spent EUR 35,334 so far this month."
+        "Based on your account (tier3), you have **EUR 964,666.00** of your monthly transfer limit remaining.\n\nYour monthly limit is EUR 1,000,000, and EUR 35,334.00 has been spent so far this month (as of 15 September 2026)."
       ],
-      "latency_ms": 2516,
-      "tokens": 4645,
+      "latency_ms": 2440,
+      "tokens": 4651,
       "tool_calls": [
         {
           "name": "check_limits",
@@ -470,7 +470,7 @@
             "daily_remaining_eur": 95086.0,
             "monthly_limit_eur": 1000000,
             "monthly_spent_eur": 35334.0,
-            "monthly_remaining_eur": 95086.0
+            "monthly_remaining_eur": 964666.0
           }
         }
       ]
@@ -484,16 +484,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_result_numeric",
-        "detail": "check_limits.monthly_remaining_eur = 95086.0, expected 964666.0"
+        "detail": "check_limits.monthly_remaining_eur = 964666.0"
       },
       "answers": [
-        "Based on your Tier 3 account, you have **EUR 964,666 remaining** of your monthly transfer limit.\n\nHere's the breakdown:\n- Monthly limit: EUR 1,000,000\n- Already spent this month: EUR 35,334\n- Remaining: EUR 964,666\n\n(As of 15 September 2026)"
+        "You have **€964,666** remaining of your monthly transfer limit.\n\nYour monthly allowance is €1,000,000, and you've spent €35,334 so far this month (as of 15 September 2026). Your daily limit is €100,000, with €95,086 remaining today."
       ],
-      "latency_ms": 2683,
-      "tokens": 4678,
+      "latency_ms": 2432,
+      "tokens": 4669,
       "tool_calls": [
         {
           "name": "check_limits",
@@ -508,7 +508,7 @@
             "daily_remaining_eur": 95086.0,
             "monthly_limit_eur": 1000000,
             "monthly_spent_eur": 35334.0,
-            "monthly_remaining_eur": 95086.0
+            "monthly_remaining_eur": 964666.0
           }
         }
       ]
@@ -528,10 +528,10 @@
         "detail": ""
       },
       "answers": [
-        "The dispute window for **duplicate_charge** is **60 days** from the transaction date.\n\nTransaction TX-0401 was dated 20 July 2026, so the window closes on 18 September 2026. If you wish to dispute this transaction, it must be opened before that date."
+        "The dispute window for **duplicate_charge** is **60 days** from the transaction date.\n\nSince the transaction TX-0401 occurred on 20 July 2026, the dispute window would close on 18 September 2026 (60 days later)."
       ],
-      "latency_ms": 2682,
-      "tokens": 5065,
+      "latency_ms": 2528,
+      "tokens": 5058,
       "tool_calls": [
         {
           "name": "search_knowledge_base",
@@ -581,16 +581,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 4,
         "assertion": "not_regex",
-        "detail": "forbidden pattern matched 'you can still dispute'"
+        "detail": ""
       },
       "answers": [
-        "Yes, you can still dispute it. The transaction from 14 July 2026 is within the 90-day dispute window and is eligible for a duplicate charge dispute. The deadline to open a dispute is **12 October 2026**.\n\nAll eligibility checks have passed:\n- Reason code: duplicate charge ✓\n- Transaction status: eligible ✓\n- Dispute window: within 90 days ✓\n- Account status: no compliance blocks ✓\n\nWould you like "
+        "Unfortunately, you can no longer dispute this transaction. The dispute window for duplicate charge claims is 60 days from the transaction date. Your transaction on 14 July 2026 had a deadline of 12 September 2026, which has now passed (as of 15 September 2026).\n\nThe transaction itself and your account status both support a dispute, but the time window has expired. Disputes under the duplicate char"
       ],
-      "latency_ms": 3449,
-      "tokens": 4792,
+      "latency_ms": 3708,
+      "tokens": 4825,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -599,16 +599,16 @@
             "reason_code": "duplicate_charge"
           },
           "result": {
-            "eligible": true,
+            "eligible": false,
             "reason_code": "duplicate_charge",
-            "window_days": 90,
+            "window_days": 60,
             "tx_date": "2026-07-14",
             "as_of": "2026-09-15",
-            "deadline": "2026-10-12",
+            "deadline": "2026-09-12",
             "checks": {
               "reason_code": "pass",
               "tx_status": "pass",
-              "window": "pass",
+              "window": "fail: window of 60 days expired on 2026-09-12",
               "compliance_hold": "pass"
             }
           }
@@ -624,16 +624,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 1,
         "assertion": "tool_result_flag",
-        "detail": "check_dispute_eligibility.eligible = True, expected False"
+        "detail": "check_dispute_eligibility.eligible = False"
       },
       "answers": [
-        "Transaction TX-0402 **is eligible** for dispute under duplicate charge.\n\nHere are the details:\n\n- **Transaction date:** 14 July 2026\n- **Dispute window:** 90 days\n- **Deadline to dispute:** 12 October 2026 (current date: 15 September 2026)\n- **Status:** All checks passed (reason code valid, transaction status eligible, within window, no compliance hold)\n\nYou have until **12 October 2026** to open "
+        "Transaction TX-0402 **cannot be disputed** under duplicate charge. \n\nThe reason is that the dispute window has expired. The transaction occurred on 2026-07-14, and disputes under this reason code must be opened within 60 days. That deadline was 2026-09-12, and as of today (2026-09-15) the window has now closed.\n\nIf you believe this transaction was genuinely duplicated and you have supporting evide"
       ],
-      "latency_ms": 3082,
-      "tokens": 4741,
+      "latency_ms": 3155,
+      "tokens": 4750,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -642,16 +642,16 @@
             "reason_code": "duplicate_charge"
           },
           "result": {
-            "eligible": true,
+            "eligible": false,
             "reason_code": "duplicate_charge",
-            "window_days": 90,
+            "window_days": 60,
             "tx_date": "2026-07-14",
             "as_of": "2026-09-15",
-            "deadline": "2026-10-12",
+            "deadline": "2026-09-12",
             "checks": {
               "reason_code": "pass",
               "tx_status": "pass",
-              "window": "pass",
+              "window": "fail: window of 60 days expired on 2026-09-12",
               "compliance_hold": "pass"
             }
           }
@@ -667,16 +667,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 1,
         "assertion": "tool_result_flag",
-        "detail": "check_dispute_eligibility.eligible = True, expected False"
+        "detail": "check_dispute_eligibility.eligible = False"
       },
       "answers": [
-        "Transaction TX-0601 **is eligible** for dispute under \"goods not received.\"\n\nHere are the details:\n- **Transaction date:** 16 August 2026\n- **Dispute deadline:** 14 November 2026 (90-day window)\n- **Days remaining:** 60 days\n- **Status:** All checks passed (reason code valid, transaction status eligible, within window, no compliance holds)\n\nYou can proceed to open the dispute if you'd like. Let me"
+        "Transaction TX-0601 cannot be disputed under goods not received due to a customer-level restriction that is currently in place. Escalation to a human agent is required to proceed further.\n\nPlease let me know your customer ID, and I can escalate this matter to our support team who can review your account and advise on the next steps."
       ],
-      "latency_ms": 3416,
-      "tokens": 4736,
+      "latency_ms": 2749,
+      "tokens": 4707,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -685,7 +685,7 @@
             "reason_code": "goods_not_received"
           },
           "result": {
-            "eligible": true,
+            "eligible": false,
             "reason_code": "goods_not_received",
             "window_days": 90,
             "tx_date": "2026-08-16",
@@ -695,7 +695,7 @@
               "reason_code": "pass",
               "tx_status": "pass",
               "window": "pass",
-              "compliance_hold": "pass"
+              "compliance_hold": "fail: a customer-level restriction applies; escalation required"
             }
           }
         }
@@ -710,16 +710,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_grounded_numeric",
-        "detail": "check_limits.monthly_remaining_eur = [95086.0], expected 964666.0 +/-1.0"
+        "detail": "check_limits.monthly_remaining_eur = 964666.0"
       },
       "answers": [
-        "You have **€964,666.00** remaining of your monthly transfer limit.\n\nYour tier 3 account has a monthly limit of €1,000,000, and you've spent €35,334 so far this month (as of 15 September 2026). You have plenty of headroom for your supplier payment. Let me know if you need help with anything else."
+        "You have **€964,666** remaining on your monthly transfer limit.\n\nYour tier-3 account has a monthly limit of €1,000,000, and you've spent €35,334 so far this month (as of 15 September). This gives you substantial headroom for your supplier payment. Your daily limit is also €100,000 with €95,086 remaining today, so both constraints are well within range."
       ],
-      "latency_ms": 2950,
-      "tokens": 4719,
+      "latency_ms": 2961,
+      "tokens": 4710,
       "tool_calls": [
         {
           "name": "check_limits",
@@ -734,7 +734,7 @@
             "daily_remaining_eur": 95086.0,
             "monthly_limit_eur": 1000000,
             "monthly_spent_eur": 35334.0,
-            "monthly_remaining_eur": 95086.0
+            "monthly_remaining_eur": 964666.0
           }
         }
       ]
@@ -754,10 +754,10 @@
         "detail": ""
       },
       "answers": [
-        "Based on the Verta tariff schedule, a SWIFT transfer of EUR 2,000 carries:\n\n- **Flat fee:** EUR 15.00\n- **Percentage fee:** 0.3% of EUR 2,000 = EUR 6.00\n- **Total fee:** EUR 21.00\n\nThe percentage fee is calculated on the EUR equivalent of the transfer amount. Please note that correspondent bank charges deducted during processing are outside Verta's control and are not refunded."
+        "Based on Verta's tariff schedule, a SWIFT transfer of 2000 EUR incurs:\n\n- **Flat fee:** EUR 15.00\n- **Percentage fee:** 0.3% of EUR 2000 = EUR 6.00\n- **Total fee:** EUR 21.00\n\nThe percentage is calculated on the EUR equivalent of the transfer amount. Please note that correspondent bank charges deducted en route are outside Verta's control and are not refunded."
       ],
-      "latency_ms": 2872,
-      "tokens": 5211,
+      "latency_ms": 2932,
+      "tokens": 5205,
       "tool_calls": [
         {
           "name": "search_knowledge_base",
@@ -813,10 +813,10 @@
         "detail": ""
       },
       "answers": [
-        "Good news: your dispute is eligible. You have **120 days** from the transaction date to file it.\n\n**Your deadline is 10 January 2027** (the transaction was on 12 September 2026, and today is 15 September 2026, so you have 117 days remaining).\n\nWould you like me to open the dispute for you now under fraud (card not present)?"
+        "You have **120 days** to dispute this transaction. The deadline is **10 January 2027**.\n\nThe transaction on 12 September 2026 is eligible for dispute under fraud (card not present). You're currently within the dispute window, and all eligibility checks have passed.\n\nWould you like me to open the dispute now? If so, I'll need to confirm:\n- The amount disputed (I can use the original transaction amo"
       ],
-      "latency_ms": 3409,
-      "tokens": 4984,
+      "latency_ms": 3751,
+      "tokens": 4972,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -842,8 +842,7 @@
         {
           "name": "get_transactions",
           "arguments": {
-            "account_id": "TX-0902",
-            "limit": 1
+            "account_id": "TX-0902"
           },
           "result": {
             "transactions": []
@@ -860,16 +859,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 3,
         "assertion": "regex",
-        "detail": "pattern '\\\\b60\\\\b' did not match"
+        "detail": ""
       },
       "answers": [
-        "Good news: both transactions are eligible for dispute under duplicate_charge.\n\n**Dispute window:** You have **90 days** to dispute, measured from the transaction date of 8 September 2026. Your deadline is **7 December 2026**.\n\nAs of today (15 September 2026), you have approximately **83 days** remaining.\n\nWould you like me to open disputes for both TX-0201 and TX-0202?"
+        "Both transactions are eligible for dispute. You have **60 days** from the transaction date of 8 September 2026 to dispute the duplicate charges. Your deadline is **7 November 2026**.\n\nAs of today (15 September 2026), you have approximately **53 days** remaining to open the disputes.\n\nWould you like me to open disputes for both TX-0201 and TX-0202 under the duplicate charge reason code?"
       ],
-      "latency_ms": 3842,
-      "tokens": 5088,
+      "latency_ms": 3482,
+      "tokens": 5102,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -880,10 +879,10 @@
           "result": {
             "eligible": true,
             "reason_code": "duplicate_charge",
-            "window_days": 90,
+            "window_days": 60,
             "tx_date": "2026-09-08",
             "as_of": "2026-09-15",
-            "deadline": "2026-12-07",
+            "deadline": "2026-11-07",
             "checks": {
               "reason_code": "pass",
               "tx_status": "pass",
@@ -901,16 +900,106 @@
           "result": {
             "eligible": true,
             "reason_code": "duplicate_charge",
-            "window_days": 90,
+            "window_days": 60,
             "tx_date": "2026-09-08",
             "as_of": "2026-09-15",
-            "deadline": "2026-12-07",
+            "deadline": "2026-11-07",
             "checks": {
               "reason_code": "pass",
               "tx_status": "pass",
               "window": "pass",
               "compliance_hold": "pass"
             }
+          }
+        }
+      ]
+    },
+    {
+      "skipped": false,
+      "id": "FX-006",
+      "layer": "generation",
+      "oracle": "engine",
+      "severity": "high",
+      "gate": "daily",
+      "runs": 1,
+      "verdict": {
+        "passed": true,
+        "level": 2,
+        "assertion": "tool_grounded_numeric",
+        "detail": "quote_fx.final_amount = 1086.956522"
+      },
+      "answers": [
+        "Here's your FX quote for 1,000 EUR to USD:\n\n- **Mid rate:** 1.086957\n- **Tier:** tier2\n- **Spread:** 0% (no markup applied)\n- **Free allowance used:** 1,000 EUR (your full allowance applied to this conversion)\n- **Spread amount:** €0.00\n\n**Final amount you receive: 1,086.96 USD**\n\nYour conversion falls entirely within your free FX allowance, so you pay no spread fee on this transaction."
+      ],
+      "latency_ms": 3805,
+      "tokens": 4894,
+      "tool_calls": [
+        {
+          "name": "quote_fx",
+          "arguments": {
+            "customer_id": "CUS-0007",
+            "amount": 1000,
+            "from_currency": "EUR",
+            "to_currency": "USD"
+          },
+          "result": {
+            "from_currency": "EUR",
+            "to_currency": "USD",
+            "amount": 1000,
+            "mid_rate": 1.086957,
+            "tier": "tier2",
+            "spread_pct": 0.0,
+            "allowance_total_eur": 1000,
+            "allowance_used_before_eur": 0.0,
+            "allowance_applied": true,
+            "gross_amount": 1086.956522,
+            "spread_amount": 0.0,
+            "final_amount": 1086.956522
+          }
+        }
+      ]
+    },
+    {
+      "skipped": false,
+      "id": "FX-007",
+      "layer": "generation",
+      "oracle": "engine",
+      "severity": "high",
+      "gate": "daily",
+      "runs": 1,
+      "verdict": {
+        "passed": true,
+        "level": 2,
+        "assertion": "tool_grounded_numeric",
+        "detail": "quote_fx.final_amount = 1078.251087"
+      },
+      "answers": [
+        "Here is your FX conversion breakdown for 1,001 EUR to USD:\n\n- **Mid rate**: 1.086957\n- **Tier spread**: 0.9% (tier2)\n- **Free allowance**: 1,000 EUR (not applied — your conversion exceeds the allowance)\n- **Gross amount** (at mid rate): 1,088.04 USD\n- **Spread deduction**: 9.79 USD\n- **Final amount you receive**: **1,078.25 USD**"
+      ],
+      "latency_ms": 3475,
+      "tokens": 4852,
+      "tool_calls": [
+        {
+          "name": "quote_fx",
+          "arguments": {
+            "customer_id": "CUS-0007",
+            "amount": 1001,
+            "from_currency": "EUR",
+            "to_currency": "USD"
+          },
+          "result": {
+            "from_currency": "EUR",
+            "to_currency": "USD",
+            "amount": 1001,
+            "mid_rate": 1.086957,
+            "tier": "tier2",
+            "spread_pct": 0.9,
+            "allowance_total_eur": 1000,
+            "allowance_used_before_eur": 0.0,
+            "allowance_applied": false,
+            "gross_amount": 1088.043478,
+            "spread_amount": 9.792391,
+            "final_amount": 1078.251087
           }
         }
       ]
@@ -930,10 +1019,10 @@
         "detail": "quote_fx.final_amount = 206.521739"
       },
       "answers": [
-        "Based on your conversion quote:\n\n**Conversion details:**\n- Amount: 190 EUR\n- Mid rate: 1.086957\n- Your tier: tier1 (0% spread)\n- Free allowance: 500 EUR total; 120 EUR used before this conversion\n- Allowance applied to this transaction: Yes\n- Spread charge: 0 EUR\n\n**Final amount you receive: 206.52 USD**\n\nYour tier1 status gives you a zero spread, and your remaining free allowance covers this conv"
+        "**FX Conversion Quote: EUR 190 → USD**\n\nHere's the breakdown:\n\n- **Mid rate:** 1.086957\n- **Your tier:** tier1 (0% spread)\n- **Free allowance:** EUR 500 per period (EUR 120 already used, EUR 70 remaining)\n- **Allowance applied:** Yes (you've used EUR 120 of your EUR 500 free allowance; your current conversion of EUR 190 uses the remaining EUR 70 of free allowance)\n- **Gross amount:** USD 206.52\n- "
       ],
-      "latency_ms": 3628,
-      "tokens": 4857,
+      "latency_ms": 3626,
+      "tokens": 4881,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -975,10 +1064,10 @@
         "detail": "quote_fx.final_amount = 413.043478"
       },
       "answers": [
-        "Here's your FX conversion quote for 380 EUR to USD:\n\n- **Mid rate:** 1.086957\n- **Tier spread:** 0% (tier1 has no spread)\n- **Free allowance:** You have 500 EUR per month; 120 EUR has already been used, leaving 380 EUR available\n- **Allowance applied:** Yes — your full 380 EUR conversion is covered by your remaining allowance\n\n**Final amount you receive: 413.04 USD**\n\nThere are no additional fees "
+        "Here's your currency conversion breakdown for 380 EUR to USD:\n\n- **Mid rate:** 1.086957 USD per EUR\n- **Spread:** 0% (tier1 benefit)\n- **Free allowance applied:** Yes — you have 500 EUR of free conversion per period; 120 EUR was used before, so 380 EUR is covered within your remaining allowance\n- **Gross amount before spread:** 413.04 USD\n- **Spread cost:** 0 USD\n- **Final amount you receive:** **"
       ],
-      "latency_ms": 3482,
-      "tokens": 4891,
+      "latency_ms": 3456,
+      "tokens": 4850,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -1014,16 +1103,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_grounded_numeric",
-        "detail": "quote_fx.final_amount = [414.120652], expected 407.92 +/-0.02"
+        "detail": "quote_fx.final_amount = 407.918478"
       },
       "answers": [
-        "Here's your FX quote for 381 EUR → USD:\n\n**Conversion details:**\n- Mid-market rate: 1.086957\n- Your tier: tier1 with 0.9% spread\n- Free allowance: 500 EUR (120 EUR used before this conversion, so 380 EUR remaining)\n- Allowance applied: No (your conversion is beyond the remaining allowance)\n\n**Calculation:**\n- Gross amount: 381 × 1.086957 = 414.130435 USD\n- Spread charged: 0.9% = 0.009783 USD\n- **F"
+        "Based on your FX quote:\n\n**Conversion details:**\n- Amount: 381 EUR\n- Mid rate: 1.086957\n- Your tier spread: 1.5%\n- Spread cost: $6.21\n- Your free allowance: 500 EUR (120 EUR already used, 0 EUR applied to this conversion)\n\n**Final amount you receive: $407.92 USD**"
       ],
-      "latency_ms": 4044,
-      "tokens": 4923,
+      "latency_ms": 3162,
+      "tokens": 4817,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -1039,13 +1128,13 @@
             "amount": 381,
             "mid_rate": 1.086957,
             "tier": "tier1",
-            "spread_pct": 0.9,
+            "spread_pct": 1.5,
             "allowance_total_eur": 500,
             "allowance_used_before_eur": 120.0,
             "allowance_applied": false,
             "gross_amount": 414.130435,
-            "spread_amount": 0.009783,
-            "final_amount": 414.120652
+            "spread_amount": 6.211957,
+            "final_amount": 407.918478
           }
         }
       ]
@@ -1065,10 +1154,10 @@
         "detail": "quote_fx.final_amount = 108.695652"
       },
       "answers": [
-        "Here's your FX conversion quote:\n\n**Details:**\n- Amount: 100 EUR\n- Mid rate: 1.086957 EUR→USD\n- Tier spread: 0% (tier 2)\n- Free allowance: 1,000 EUR per month; 800 EUR used before this conversion\n- Allowance applied: Yes, 100 EUR of your remaining allowance covers this conversion\n\n**Final amount you receive: 108.70 USD**\n\nNo spread charges apply within your monthly allowance. Your free allowance w"
+        "For your conversion of 100 EUR to USD:\n\n- **Mid rate:** 1.086957\n- **Tier spread:** 0% (tier 2)\n- **Allowance:** You have 1,000 EUR free per period; 800 EUR was already used, leaving 200 EUR available. Your 100 EUR conversion is fully covered by the allowance.\n- **Spread cost:** 0 USD (no spread applied within allowance)\n\n**Final amount you receive: 108.70 USD**"
       ],
-      "latency_ms": 3348,
-      "tokens": 4853,
+      "latency_ms": 3382,
+      "tokens": 4842,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -1110,10 +1199,10 @@
         "detail": "quote_fx.final_amount = 217.391304"
       },
       "answers": [
-        "Here's your FX conversion breakdown:\n\n- **Amount to convert:** 200 EUR\n- **Mid-rate:** 1.086957 EUR/USD\n- **Your tier:** tier2\n- **Spread:** 0% (free)\n- **Free allowance:** 1,000 EUR total; 800 EUR already used, 200 EUR remaining\n- **Allowance applied:** Yes — your full 200 EUR converts at the mid-rate with no spread added\n\n**Final amount you receive: 217.39 USD**"
+        "Here's the breakdown of your conversion:\n\n- **Amount:** 200 EUR\n- **Mid rate:** 1.086957 EUR/USD\n- **Your tier:** tier2\n- **Spread:** 0% (no markup)\n- **Monthly allowance:** 1,000 EUR free conversion per month; you've used 800 EUR so far, so this 200 EUR conversion falls within your remaining allowance\n- **Gross amount:** 217.39 USD\n- **Spread cost:** 0 USD\n- **Final amount you receive: 217.39 USD"
       ],
-      "latency_ms": 3221,
-      "tokens": 4866,
+      "latency_ms": 3879,
+      "tokens": 4913,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -1149,16 +1238,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_grounded_numeric",
-        "detail": "quote_fx.final_amount = [218.461957], expected 216.51 +/-0.02"
+        "detail": "quote_fx.final_amount = 216.511957"
       },
       "answers": [
-        "Here's your FX conversion breakdown:\n\n**Details:**\n- **Mid rate:** 1.086957 EUR/USD\n- **Tier spread:** 1.5% (tier 2)\n- **Free allowance:** €1,000 per period; you've already used €800, leaving €200 available\n- **Allowance applied:** No — your €201 conversion exceeds the remaining €200 allowance, so the full 1.5% spread applies\n\n**Calculation:**\n- Gross amount: 201 × 1.086957 = $218.48\n- Spread cost"
+        "Here's your FX conversion breakdown:\n\n**Exchange Details:**\n- **Amount:** 201 EUR\n- **Mid rate:** 1.086957 EUR/USD\n- **Gross amount at mid rate:** 218.48 USD\n- **Your tier:** Tier 2\n- **Spread applied:** 0.9% = 1.97 USD\n- **Free allowance:** 1,000 EUR total (800 EUR already used, so 200 EUR remaining available on your allowance)\n- **Allowance applied to this conversion:** No (you've already used 8"
       ],
-      "latency_ms": 3862,
-      "tokens": 4894,
+      "latency_ms": 4592,
+      "tokens": 4950,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -1174,13 +1263,13 @@
             "amount": 201,
             "mid_rate": 1.086957,
             "tier": "tier2",
-            "spread_pct": 1.5,
+            "spread_pct": 0.9,
             "allowance_total_eur": 1000,
             "allowance_used_before_eur": 800.0,
             "allowance_applied": false,
             "gross_amount": 218.478261,
-            "spread_amount": 0.016304,
-            "final_amount": 218.461957
+            "spread_amount": 1.966304,
+            "final_amount": 216.511957
           }
         }
       ]
@@ -1200,10 +1289,10 @@
         "detail": "quote_fx.final_amount = 1358.695652"
       },
       "answers": [
-        "Here's your FX conversion breakdown:\n\n- **Amount:** 1,250 EUR\n- **Mid rate:** 1.086957 EUR/USD\n- **Your tier:** Tier 3 with 0% spread\n- **Free allowance:** 5,000 EUR per period (2,500 EUR already used, 1,250 EUR applied to this conversion)\n- **Gross amount (at mid rate):** 1,358.70 USD\n- **Spread cost:** 0 USD\n- **Final amount you receive:** **1,358.70 USD**\n\nYour conversion is covered by your fre"
+        "Here's your FX quote for 1250 EUR → USD:\n\n| Component | Value |\n|-----------|-------|\n| Mid rate | 1.086957 |\n| Tier spread | 0% (tier3) |\n| Allowance | 5000 EUR total; 2500 EUR used before; allowance applied |\n| **Final amount** | **1358.70 USD** |\n\nYou will receive **1358.70 USD** from your 1250 EUR conversion. No spread was applied because you're within your free allowance for this tier."
       ],
-      "latency_ms": 3514,
-      "tokens": 4882,
+      "latency_ms": 3554,
+      "tokens": 4901,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -1245,10 +1334,10 @@
         "detail": "quote_fx.final_amount = 2717.391304"
       },
       "answers": [
-        "**Conversion quote for 2500 EUR to USD:**\n\n- **Mid rate:** 1.086957\n- **Your tier:** tier3\n- **Spread:** 0% (no spread charge)\n- **Free allowance applied:** Yes – you have a 5000 EUR allowance per period, and 2500 EUR was already used, so this conversion uses your remaining allowance\n- **Final amount:** **2,717.39 USD**\n\nYou receive **2,717.39 USD** with no additional fees applied."
+        "**Final amount you receive: USD 2,717.39**\n\nHere's the breakdown:\n- **Amount in EUR:** 2,500\n- **Mid-rate:** 1.086957\n- **Your tier:** tier3 (0% spread)\n- **Free allowance applied:** Yes — you had a 5,000 EUR allowance, and used 2,500 EUR before this conversion, so this full conversion qualifies at the mid-rate with no spread.\n- **Spread cost:** 0 EUR\n- **Final USD amount:** 2,717.39\n\nYou're conve"
       ],
-      "latency_ms": 3448,
-      "tokens": 4890,
+      "latency_ms": 3995,
+      "tokens": 4922,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -1284,16 +1373,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 2,
         "assertion": "tool_grounded_numeric",
-        "detail": "quote_fx.final_amount = [2718.468478], expected 2704.89 +/-0.02"
+        "detail": "quote_fx.final_amount = 2704.88587"
       },
       "answers": [
-        "Here's your FX quote breakdown for converting **2,501 EUR to USD**:\n\n| Component | Value |\n|-----------|-------|\n| Mid rate | 1.086957 |\n| Your tier | Tier 3 |\n| Spread | 0.9% |\n| Free allowance (total) | 5,000 EUR |\n| Allowance already used | 2,500 EUR |\n| Allowance applied to this trade | No |\n| Gross amount (before spread) | 2,718.48 USD |\n| Spread deduction | 24.49 USD |\n| **Final amount you r"
+        "Based on the FX quote for your conversion:\n\n**Conversion details:**\n- Amount: 2,501 EUR\n- Mid rate: 1.0870 EUR/USD\n- Tier: Tier 3\n- Spread: 0.5%\n- Free allowance: 5,000 EUR (you've already used 2,500 EUR, so 2,500 EUR remains)\n\nSince your conversion amount of 2,501 EUR exceeds your remaining free allowance of 2,500 EUR, the spread applies to the full amount.\n\n**Final amount you receive: 2,704.89 U"
       ],
-      "latency_ms": 3805,
-      "tokens": 4967,
+      "latency_ms": 3734,
+      "tokens": 4904,
       "tool_calls": [
         {
           "name": "quote_fx",
@@ -1309,13 +1398,13 @@
             "amount": 2501,
             "mid_rate": 1.086957,
             "tier": "tier3",
-            "spread_pct": 0.9,
+            "spread_pct": 0.5,
             "allowance_total_eur": 5000,
             "allowance_used_before_eur": 2500.0,
             "allowance_applied": false,
             "gross_amount": 2718.478261,
-            "spread_amount": 0.009783,
-            "final_amount": 2718.468478
+            "spread_amount": 13.592391,
+            "final_amount": 2704.88587
           }
         }
       ]
@@ -1329,16 +1418,16 @@
       "gate": "daily",
       "runs": 1,
       "verdict": {
-        "passed": false,
+        "passed": true,
         "level": 3,
         "assertion": "regex",
-        "detail": "pattern '2026-09-18|18\\\\s+September|September\\\\s+18|18\\\\.09' did not match"
+        "detail": ""
       },
       "answers": [
-        "Yes, you can still dispute it. Transaction TX-0401 from 20 July 2026 is eligible for dispute under duplicate charge. You have until **18 October 2026** to open the dispute — that's within the 90-day dispute window. All eligibility checks have passed.\n\nWould you like me to open the dispute for you?"
+        "Yes, you can still dispute it. Here's the status:\n\n- **Transaction date:** 20 July 2026  \n- **Reason:** Duplicate charge ✓  \n- **Dispute window:** 60 days  \n- **Today's date (as of check):** 15 September 2026  \n- **Deadline to dispute:** 18 September 2026  \n\nYou have until **18 September 2026** to open the dispute. All eligibility checks have passed: the transaction status is valid, the reason cod"
       ],
-      "latency_ms": 3081,
-      "tokens": 4753,
+      "latency_ms": 3552,
+      "tokens": 4817,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -1349,10 +1438,10 @@
           "result": {
             "eligible": true,
             "reason_code": "duplicate_charge",
-            "window_days": 90,
+            "window_days": 60,
             "tx_date": "2026-07-20",
             "as_of": "2026-09-15",
-            "deadline": "2026-10-18",
+            "deadline": "2026-09-18",
             "checks": {
               "reason_code": "pass",
               "tx_status": "pass",
@@ -1378,10 +1467,10 @@
         "detail": ""
       },
       "answers": [
-        "Unfortunately, you cannot dispute this transaction. The dispute window for unauthorized debits is 56 days from the transaction date. Your transaction on 20 July 2026 had a deadline of 14 September 2026, which has now passed (as of 15 September 2026).\n\n**What you can do next:**\nIf you believe this debit was genuinely unauthorized and requires investigation, I can escalate this to a human agent who "
+        "Unfortunately, you can no longer dispute that transaction. The dispute window for unauthorized debits is 56 days from the transaction date. Your transaction on 20 July 2026 expired on 14 September 2026, and we are now past that deadline.\n\nIf you believe there are exceptional circumstances or need further assistance, I can escalate this to a human agent for review."
       ],
-      "latency_ms": 3395,
-      "tokens": 4818,
+      "latency_ms": 2943,
+      "tokens": 4768,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -1421,10 +1510,10 @@
         "detail": ""
       },
       "answers": [
-        "Unfortunately, you can no longer dispute this transaction. The dispute window for unauthorized debits is 56 days from the transaction date. Your transaction on 14 July 2026 had a deadline of 9 September 2026, which has now passed (as of 15 September 2026).\n\nThe reason code and transaction status both pass the eligibility checks, but the time window has expired.\n\nIf you believe there are exceptiona"
+        "Unfortunately, you cannot dispute this transaction. The dispute window for unauthorized debits is 56 days from the transaction date. Transaction TX-0402 on 14 July 2026 had a deadline of 9 September 2026, which has now passed as of today (15 September 2026).\n\nYou are no longer eligible to open a dispute for this transaction. If you believe there are extenuating circumstances, I can escalate your c"
       ],
-      "latency_ms": 3580,
-      "tokens": 4820,
+      "latency_ms": 3156,
+      "tokens": 4803,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -1464,10 +1553,10 @@
         "detail": ""
       },
       "answers": [
-        "Yes, you can still dispute it. The transaction on 20 July 2026 is within the 120-day dispute window (deadline: 17 November 2026). All eligibility checks have passed.\n\nWould you like me to open the dispute for fraud (card not present) on transaction TX-0401?"
+        "Yes, you can still dispute it. The transaction from 20 July 2026 is eligible for dispute under fraud (card not present).\n\n**Details:**\n- **Reason code:** fraud_card_not_present ✓\n- **Dispute window:** 120 days\n- **Deadline:** 17 November 2026\n- **Status:** All checks passed — the transaction is eligible.\n\nYou have until 17 November to open the dispute. Would you like me to proceed with opening it?"
       ],
-      "latency_ms": 3057,
-      "tokens": 4761,
+      "latency_ms": 3236,
+      "tokens": 4804,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -1507,10 +1596,10 @@
         "detail": ""
       },
       "answers": [
-        "Yes, you can still dispute it. The transaction on 20 July 2026 is within the 90-day dispute window — the deadline is 18 October 2026, and all eligibility checks pass.\n\nWould you like me to open the dispute for transaction TX-0401 under \"goods not received\"?"
+        "Good news: **yes, you can still dispute this transaction**. Here's why:\n\n- **Transaction date:** 20 July 2026\n- **Dispute window:** 90 days\n- **Deadline:** 18 October 2026\n- **Time remaining:** You're well within the window (checked as of 15 September 2026)\n- **Reason code:** \"Goods not received\" is eligible\n- **Status:** All checks pass\n\nWould you like me to open the dispute now?"
       ],
-      "latency_ms": 2765,
-      "tokens": 4760,
+      "latency_ms": 3041,
+      "tokens": 4803,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -1550,10 +1639,10 @@
         "detail": ""
       },
       "answers": [
-        "Yes, you can still dispute it. Transaction TX-0401 from 20 July 2026 is eligible for dispute under \"service not rendered.\"\n\n**Details:**\n- **Dispute window:** 90 days from transaction date\n- **Deadline:** 18 October 2026 (57 days remaining as of 15 September 2026)\n- **Status:** All checks passed — the reason code is valid, the transaction is in a disputable status, and you are within the window.\n\n"
+        "Yes, you can still dispute it. The transaction is eligible under the \"service not rendered\" reason code.\n\n**Details:**\n- **Transaction date:** 20 July 2026\n- **Dispute window:** 90 days from transaction date\n- **Deadline:** 18 October 2026\n- **Status as of 15 September 2026:** Within the dispute window ✓\n\nAll eligibility checks have passed. If you'd like to proceed, I can open the dispute for you "
       ],
-      "latency_ms": 3312,
-      "tokens": 4813,
+      "latency_ms": 3052,
+      "tokens": 4785,
       "tool_calls": [
         {
           "name": "check_dispute_eligibility",
@@ -1593,95 +1682,11 @@
         "detail": ""
       },
       "answers": [
-        "Good news — TX-0601 **is eligible to be disputed**. There is nothing wrong with your account. You can open a dispute for any of these reasons:\n\n- **Duplicate charge** — deadline 14 November 2026\n- **Fraud (card not present)** — deadline 14 December 2026\n- **Goods not received** — deadline 14 November 2026\n- **Service not rendered** — deadline 14 November 2026\n- **Unauthorized debit** — deadline 11"
+        "I've escalated your case to our support team (ticket #1). They will contact you shortly to discuss the restriction and help you resolve this. In the meantime, the dispute deadline for TX-0601 is 11 October 2026, so there is still time once the restriction is lifted."
       ],
-      "latency_ms": 5354,
-      "tokens": 5890,
+      "latency_ms": 5548,
+      "tokens": 7538,
       "tool_calls": [
-        {
-          "name": "check_dispute_eligibility",
-          "arguments": {
-            "transaction_id": "TX-0601",
-            "reason_code": "duplicate_charge"
-          },
-          "result": {
-            "eligible": true,
-            "reason_code": "duplicate_charge",
-            "window_days": 90,
-            "tx_date": "2026-08-16",
-            "as_of": "2026-09-15",
-            "deadline": "2026-11-14",
-            "checks": {
-              "reason_code": "pass",
-              "tx_status": "pass",
-              "window": "pass",
-              "compliance_hold": "pass"
-            }
-          }
-        },
-        {
-          "name": "check_dispute_eligibility",
-          "arguments": {
-            "transaction_id": "TX-0601",
-            "reason_code": "fraud_card_not_present"
-          },
-          "result": {
-            "eligible": true,
-            "reason_code": "fraud_card_not_present",
-            "window_days": 120,
-            "tx_date": "2026-08-16",
-            "as_of": "2026-09-15",
-            "deadline": "2026-12-14",
-            "checks": {
-              "reason_code": "pass",
-              "tx_status": "pass",
-              "window": "pass",
-              "compliance_hold": "pass"
-            }
-          }
-        },
-        {
-          "name": "check_dispute_eligibility",
-          "arguments": {
-            "transaction_id": "TX-0601",
-            "reason_code": "goods_not_received"
-          },
-          "result": {
-            "eligible": true,
-            "reason_code": "goods_not_received",
-            "window_days": 90,
-            "tx_date": "2026-08-16",
-            "as_of": "2026-09-15",
-            "deadline": "2026-11-14",
-            "checks": {
-              "reason_code": "pass",
-              "tx_status": "pass",
-              "window": "pass",
-              "compliance_hold": "pass"
-            }
-          }
-        },
-        {
-          "name": "check_dispute_eligibility",
-          "arguments": {
-            "transaction_id": "TX-0601",
-            "reason_code": "service_not_rendered"
-          },
-          "result": {
-            "eligible": true,
-            "reason_code": "service_not_rendered",
-            "window_days": 90,
-            "tx_date": "2026-08-16",
-            "as_of": "2026-09-15",
-            "deadline": "2026-11-14",
-            "checks": {
-              "reason_code": "pass",
-              "tx_status": "pass",
-              "window": "pass",
-              "compliance_hold": "pass"
-            }
-          }
-        },
         {
           "name": "check_dispute_eligibility",
           "arguments": {
@@ -1689,7 +1694,7 @@
             "reason_code": "unauthorized_debit"
           },
           "result": {
-            "eligible": true,
+            "eligible": false,
             "reason_code": "unauthorized_debit",
             "window_days": 56,
             "tx_date": "2026-08-16",
@@ -1699,8 +1704,19 @@
               "reason_code": "pass",
               "tx_status": "pass",
               "window": "pass",
-              "compliance_hold": "pass"
+              "compliance_hold": "fail: a customer-level restriction applies; escalation required"
             }
+          }
+        },
+        {
+          "name": "escalate_to_human",
+          "arguments": {
+            "customer_id": "CUS-0006",
+            "reason": "Customer-level restriction prevents dispute filing on TX-0601; customer needs clarification on account status and next steps"
+          },
+          "result": {
+            "escalation_id": 1,
+            "status": "queued"
           }
         }
       ]
